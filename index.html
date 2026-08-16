@@ -1,422 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC81KWX1J2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-HC81KWX1J2');
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Schedule</title>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Legacy Lifted Dispatch helps owner-operators find profitable loads, reduce deadhead, and stay moving with reliable dispatch support." />
-  <title>Legacy Lifted Dispatch</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;
-  n.push=n;
-  n.loaded=!0;
-  n.version='2.0';
-  n.queue=[];
-  t=b.createElement(e);
-  t.async=!0;
-  t.src=v;
-  s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s);
-  }(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-
-  fbq('init', '2322034578300806');
-  fbq('track', 'PageView');
-  </script>
-
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2322034578300806&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Schedule section styling -->
   <style>
-    .schedule {
-      background: #f8f6f1;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .header {
       text-align: center;
+      margin-bottom: 25px;
     }
 
-    .schedule-content {
-      max-width: 900px;
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
     }
 
-    .schedule-card {
-      max-width: 650px;
-      margin: 40px auto 0;
-      padding: 45px 35px;
-      background: #ffffff;
+    .header p {
+      margin: 0;
+      color: #6b7280;
+    }
+
+    .calendar-box {
+      background: white;
       border-radius: 16px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
     }
 
-    .schedule-icon {
-      font-size: 42px;
-      margin-bottom: 15px;
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
 
-    .schedule-card h3 {
-      margin: 0 0 12px;
-      font-size: 26px;
+    .calendar-header h2 {
+      margin: 0;
+      font-size: 24px;
     }
 
-    .schedule-card p {
-      max-width: 550px;
-      margin: 0 auto 25px;
-      line-height: 1.7;
+    button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
     }
 
-    .schedule-card .btn {
-      display: inline-block;
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .weekdays,
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .weekday {
+      text-align: center;
+      font-weight: bold;
+      color: #6b7280;
+      padding: 10px 2px;
+      font-size: 13px;
+    }
+
+    .day {
+      min-height: 85px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 8px;
+      background: #fff;
+      position: relative;
+    }
+
+    .day-number {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .available {
+      cursor: pointer;
+      background: #eff6ff;
+      border-color: #93c5fd;
+    }
+
+    .available:hover {
+      background: #dbeafe;
+    }
+
+    .unavailable {
+      background: #f9fafb;
+      color: #9ca3af;
+    }
+
+    .today {
+      border: 2px solid #2563eb;
+    }
+
+    .availability-label {
+      font-size: 11px;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .time-panel {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+    }
+
+    .time-panel h3 {
+      margin-top: 0;
+    }
+
+    .selected-date {
+      color: #2563eb;
+    }
+
+    .times {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .time-button {
+      background: white;
+      color: #2563eb;
+      border: 1px solid #93c5fd;
+    }
+
+    .time-button:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .note {
+      margin-top: 20px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 10px;
+        margin: 10px auto;
+      }
+
+      .calendar-box {
+        padding: 12px;
+      }
+
+      .calendar-header h2 {
+        font-size: 19px;
+      }
+
+      .day {
+        min-height: 65px;
+        padding: 5px;
+      }
+
+      .availability-label {
+        font-size: 9px;
+      }
+
+      .weekday {
+        font-size: 11px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="contact-list">
-        <a href="tel:+18501234567">☎ <span>(850) 123-4567</span></a>
-        <a href="mailto:teamdispatch.legacylifted@gmail.com">✉ <span>teamdispatch.legacylifted@gmail.com</span></a>
-        <span>📍 7901 4th St N Ste 300, St. Petersburg, FL 33702</span>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Onboarding Schedule</h1>
+      <p>Select an available date and time for your onboarding.</p>
+    </div>
+
+    <div class="calendar-box">
+
+      <div class="calendar-header">
+        <button onclick="previousMonth()">‹ Previous</button>
+        <h2 id="monthYear"></h2>
+        <button onclick="nextMonth()">Next ›</button>
       </div>
 
-      <div class="socials" aria-label="Social links">
-        <a href="#" aria-label="Facebook">f</a>
-        <a href="#" aria-label="Instagram">◎</a>
-        <a href="mailto:teamdispatch.legacylifted@gmail.com" aria-label="Email">✉</a>
+      <div class="weekdays">
+        <div class="weekday">Sun</div>
+        <div class="weekday">Mon</div>
+        <div class="weekday">Tue</div>
+        <div class="weekday">Wed</div>
+        <div class="weekday">Thu</div>
+        <div class="weekday">Fri</div>
+        <div class="weekday">Sat</div>
       </div>
+
+      <div class="days" id="calendarDays"></div>
+
+      <div class="time-panel" id="timePanel">
+        <h3>
+          Available Times for
+          <span class="selected-date" id="selectedDate"></span>
+        </h3>
+
+        <p>Available hours: <strong>8:00 AM – 5:00 PM</strong></p>
+
+        <div class="times" id="times"></div>
+      </div>
+
+      <div class="note">
+        Monday–Friday • 8:00 AM–5:00 PM
+      </div>
+
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="Legacy Lifted home">
-        <img src="legacy-lifted-logo.jpg" alt="Legacy Lifted logo" />
-      </a>
+  <script>
 
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    // YOUR GOOGLE CALENDAR BOOKING LINK
+    const bookingLink = "https://calendar.app.google/oTzwz2eRAX";
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a class="active" href="#home">Home</a>
-        <a href="#about">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#careers">Careers</a>
-        <a href="#schedule">Schedule a Call</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    // Current displayed month
+    let currentDate = new Date();
 
-      <a class="btn btn-outline nav-cta" href="#contact">Get a Quote</a>
-    </div>
-  </header>
+    // Generate time slots
+    function generateTimes() {
 
-  <main id="home">
+      const times = [];
 
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Truck Dispatching for Owner-Operators</span>
-          <h1>Smart Dispatching.<br />Stronger <span>Profits.</span></h1>
-          <p>
-            Legacy Lifted Dispatch connects owner-operators with profitable loads,
-            handles the paperwork, and keeps communication clear—so you can focus on the road.
-          </p>
+      for (let hour = 8; hour < 17; hour++) {
 
-          <div class="hero-actions">
-            <a class="btn btn-gold" href="#schedule">Schedule a Call</a>
-            <a class="text-link" href="#services">Explore Services →</a>
-          </div>
-        </div>
+        let hour12 = hour;
 
-        <div class="hero-features" aria-label="Key dispatch benefits">
-          <article class="feature-row">
-            <div class="icon">◎</div>
-            <div>
-              <h3>Maximum Loads</h3>
-              <p>We search and negotiate loads that fit your equipment, lane preferences, and revenue goals.</p>
-            </div>
-          </article>
+        let period = "AM";
 
-          <article class="feature-row">
-            <div class="icon">24</div>
-            <div>
-              <h3>24/7 Dispatch Support</h3>
-              <p>Consistent communication and dependable assistance whenever you need it.</p>
-            </div>
-          </article>
+        if (hour >= 12) {
+          period = "PM";
 
-          <article class="feature-row">
-            <div class="icon">↝</div>
-            <div>
-              <h3>Smart Routing</h3>
-              <p>Efficient route planning helps reduce deadhead and keeps more money in your pocket.</p>
-            </div>
-          </article>
+          if (hour > 12) {
+            hour12 = hour - 12;
+          }
+        }
 
-          <article class="feature-row">
-            <div class="icon">✓</div>
-            <div>
-              <h3>Reliable Partnership</h3>
-              <p>We treat your trucking business with the same care and urgency as our own.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+        times.push(`${hour12}:00 ${period}`);
+        times.push(`${hour12}:30 ${period}`);
+      }
 
-    <section class="section services" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span>How We Help Owner-Operators</span>
-          <h2>Dispatch support built around your business</h2>
-          <p>Simple, responsive service designed to keep you moving and earning.</p>
-        </div>
+      // Add 5:00 PM
+      times.push("5:00 PM");
 
-        <div class="card-grid">
-          <article class="service-card">
-            <div class="service-icon">⌕</div>
-            <h3>Find the Right Loads</h3>
-            <p>We locate and negotiate loads that match your truck type, preferred lanes, and schedule.</p>
-          </article>
+      return times;
+    }
 
-          <article class="service-card">
-            <div class="service-icon">▤</div>
-            <h3>Handle the Details</h3>
-            <p>From broker setup and rate confirmations to paperwork and follow-up, we stay on top of the details.</p>
-          </article>
+    // Display calendar
+    function renderCalendar() {
 
-          <article class="service-card">
-            <div class="service-icon">◌</div>
-            <h3>Keep You Informed</h3>
-            <p>Clear updates, check calls, and communication throughout every load.</p>
-          </article>
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth();
 
-          <article class="service-card">
-            <div class="service-icon">$</div>
-            <h3>Improve Revenue</h3>
-            <p>Better rate negotiation, smarter routes, and fewer empty miles help strengthen your bottom line.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
 
-    <section class="section about" id="about">
-      <div class="container about-grid">
-        <div>
-          <span class="eyebrow">About Legacy Lifted</span>
-          <h2>Your success is our mission.</h2>
-        </div>
+      document.getElementById("monthYear").textContent =
+        `${monthNames[month]} ${year}`;
 
-        <div>
-          <p>
-            We are more than a dispatch service—we are a business partner for owner-operators and small carriers.
-            Our team focuses on communication, load strategy, rate negotiation, and dependable support.
-          </p>
-          <p>
-            Every decision is made with one goal in mind: helping your truck stay productive while protecting your time and profitability.
-          </p>
-        </div>
-      </div>
-    </section>
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    <section class="section process">
-      <div class="container">
-        <div class="section-heading">
-          <span>Our Process</span>
-          <h2>Simple from day one</h2>
-        </div>
+      const calendarDays = document.getElementById("calendarDays");
 
-        <div class="steps">
-          <article>
-            <strong>01</strong>
-            <h3>Tell us about your truck</h3>
-            <p>Share your equipment type, preferred lanes, home time, and goals.</p>
-          </article>
+      calendarDays.innerHTML = "";
 
-          <article>
-            <strong>02</strong>
-            <h3>We search and negotiate</h3>
-            <p>We find suitable opportunities and work to secure stronger rates.</p>
-          </article>
+      // Empty spaces before first day
+      for (let i = 0; i < firstDay; i++) {
 
-          <article>
-            <strong>03</strong>
-            <h3>You stay moving</h3>
-            <p>We handle dispatch communication and keep the load organized from pickup to delivery.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        const emptyDay = document.createElement("div");
 
-    <section class="section careers" id="careers">
-      <div class="container callout">
-        <div>
-          <span class="eyebrow">Join Our Team</span>
-          <h2>Build your career in truck dispatching.</h2>
-          <p>We value reliable communicators, strong negotiators, and people who care about carrier success.</p>
-        </div>
+        emptyDay.className = "day";
 
-        <a class="btn btn-outline" href="mailto:teamdispatch.legacylifted@gmail.com?subject=Career%20Inquiry">
-          Send Your Resume
-        </a>
-      </div>
-    </section>
+        emptyDay.style.visibility = "hidden";
 
-    <!-- Google Calendar / Google Meet Scheduling -->
-    <section class="section schedule" id="schedule">
-      <div class="container schedule-content">
-        <div class="section-heading">
-          <span>Schedule a Call</span>
-          <h2>Let’s talk about your trucking business.</h2>
-          <p>
-            Choose a convenient time for a quick consultation with our team.
-            Your meeting will be held through Google Meet.
-          </p>
-        </div>
+        calendarDays.appendChild(emptyDay);
+      }
 
-        <div class="schedule-card">
-          <div class="schedule-icon">📅</div>
+      const today = new Date();
 
-          <h3>Book Your Consultation</h3>
+      // Days
+      for (let day = 1; day <= daysInMonth; day++) {
 
-          <p>
-            Select an available date and time. Once your appointment is confirmed,
-            you'll receive the Google Meet information for your meeting.
-          </p>
+        const date = new Date(year, month, day);
 
-          <a
-            class="btn btn-gold"
-            href="https://calendar.app.google/oTzwz2eRAXYrbaQ27"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Schedule a Google Meet
-          </a>
-        </div>
-      </div>
-    </section>
+        const dayOfWeek = date.getDay();
 
-    <section class="section contact" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <span class="eyebrow">Get Started</span>
-          <h2>Let’s move your business forward.</h2>
-          <p>
-            Tell us about your truck and dispatch needs. Our team will contact you to discuss the next step.
-          </p>
+        const dayElement = document.createElement("div");
 
-          <div class="contact-details">
-            <a href="mailto:teamdispatch.legacylifted@gmail.com">teamdispatch.legacylifted@gmail.com</a>
-            <a href="tel:+18501234567">(850) 123-4567</a>
-            <span>7901 4th St N Ste 300, St. Petersburg, FL 33702</span>
-          </div>
-        </div>
+        dayElement.className = "day";
 
-        <form
-          class="contact-form"
-          action="https://formsubmit.co/teamdispatch.legacylifted@gmail.com"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New Legacy Lifted Dispatch Inquiry">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input
-            type="hidden"
-            name="_next"
-            value="https://legacyliftedtrucking.github.io/legacy-lifted-dispatch/#contact"
-          >
+        const number = document.createElement("div");
 
-          <div class="form-row">
-            <label>
-              Full Name
-              <input type="text" name="name" required />
-            </label>
+        number.className = "day-number";
 
-            <label>
-              Phone Number
-              <input type="tel" name="phone" required />
-            </label>
-          </div>
+        number.textContent = day;
 
-          <label>
-            Email Address
-            <input type="email" name="email" required />
-          </label>
+        dayElement.appendChild(number);
 
-          <label>
-            Equipment Type
-            <select name="equipment">
-              <option>Dry Van</option>
-              <option>Reefer</option>
-              <option>Flatbed</option>
-              <option>Box Truck</option>
-              <option>Power Only</option>
-              <option>Hotshot</option>
-              <option>Other</option>
-            </select>
-          </label>
+        // Check if today
+        if (
+          date.getDate() === today.getDate() &&
+          date.getMonth() === today.getMonth() &&
+          date.getFullYear() === today.getFullYear()
+        ) {
+          dayElement.classList.add("today");
+        }
 
-          <label>
-            Tell us about your dispatch needs
-            <textarea name="message" rows="5"></textarea>
-          </label>
+        // Monday-Friday
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
 
-          <button class="btn btn-gold" type="submit">Request a Consultation</button>
+          dayElement.classList.add("available");
 
-          <small>
-            After the first submission, confirm the activation email sent to your Gmail account.
-          </small>
-        </form>
-      </div>
-    </section>
-  </main>
+          const label = document.createElement("div");
 
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="legacy-lifted-logo.jpg" alt="Legacy Lifted logo" />
-        <p>Reliable truck dispatching support for owner-operators and small carriers.</p>
-      </div>
+          label.className = "availability-label";
 
-      <div>
-        <h3>Quick Links</h3>
-        <a href="#about">About Us</a>
-        <a href="#services">Services</a>
-        <a href="#careers">Careers</a>
-        <a href="#schedule">Schedule a Call</a>
-        <a href="#contact">Contact</a>
-      </div>
+          label.textContent = "8 AM–5 PM";
 
-      <div>
-        <h3>Contact</h3>
-        <a href="mailto:teamdispatch.legacylifted@gmail.com">Email Us</a>
-        <a href="tel:+18501234567">(850) 123-4567</a>
-      </div>
-    </div>
+          dayElement.appendChild(label);
 
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> Legacy Lifted Dispatch. All rights reserved.</span>
-    </div>
-  </footer>
+          dayElement.onclick = function() {
 
-  <script src="script.js"></script>
+            showTimes(date);
+
+          };
+
+        } else {
+
+          dayElement.classList.add("unavailable");
+
+          const label = document.createElement("div");
+
+          label.className = "availability-label";
+
+          label.style.color = "#9ca3af";
+
+          label.textContent = "Unavailable";
+
+          dayElement.appendChild(label);
+        }
+
+        calendarDays.appendChild(dayElement);
+      }
+    }
+
+    // Show available times
+    function showTimes(date) {
+
+      const panel = document.getElementById("timePanel");
+
+      const selectedDate = document.getElementById("selectedDate");
+
+      const timesContainer = document.getElementById("times");
+
+      const formattedDate = date.toLocaleDateString(
+        "en-US",
+        {
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+          year: "numeric"
+        }
+      );
+
+      selectedDate.textContent = formattedDate;
+
+      timesContainer.innerHTML = "";
+
+      const times = generateTimes();
+
+      times.forEach(function(time) {
+
+        const button = document.createElement("button");
+
+        button.className = "time-button";
+
+        button.textContent = time;
+
+        button.onclick = function() {
+
+          /*
+            Google Calendar's booking page controls
+            the actual appointment availability.
+
+            Clicking a time opens your booking page.
+          */
+
+          window.open(bookingLink, "_blank");
+
+        };
+
+        timesContainer.appendChild(button);
+
+      });
+
+      panel.style.display = "block";
+
+      panel.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+    }
+
+    // Previous month
+    function previousMonth() {
+
+      currentDate.setMonth(currentDate.getMonth() - 1);
+
+      renderCalendar();
+
+      document.getElementById("timePanel").style.display = "none";
+    }
+
+    // Next month
+    function nextMonth() {
+
+      currentDate.setMonth(currentDate.getMonth() + 1);
+
+      renderCalendar();
+
+      document.getElementById("timePanel").style.display = "none";
+    }
+
+    // Start calendar
+    renderCalendar();
+
+  </script>
+
 </body>
 </html>
