@@ -1,479 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onboarding Schedule</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Legacy Lifted Dispatch | Onboarding Schedule</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fb;
-      color: #1f2937;
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+/* HEADER */
+
+.header {
+    background: #111827;
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.header p {
+    margin: 10px 0 0;
+    color: #d1d5db;
+    font-size: 16px;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1050px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* INTRO */
+
+.intro {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+}
+
+.intro h2 {
+    margin-top: 0;
+}
+
+.intro p {
+    color: #6b7280;
+}
+
+/* CALENDAR */
+
+.calendar-container {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.calendar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.calendar-top h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav-button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-button:hover {
+    background: #1d4ed8;
+}
+
+/* WEEK DAYS */
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 3px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* DAYS */
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day {
+    min-height: 95px;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    padding: 9px;
+    background: #ffffff;
+}
+
+.empty {
+    visibility: hidden;
+}
+
+.day-number {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.available {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    cursor: pointer;
+}
+
+.available:hover {
+    background: #dbeafe;
+    transform: translateY(-1px);
+}
+
+.weekend {
+    background: #f9fafb;
+    color: #9ca3af;
+}
+
+.available-label {
+    font-size: 10px;
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.unavailable-label {
+    font-size: 10px;
+    color: #9ca3af;
+}
+
+.today {
+    border: 2px solid #2563eb;
+}
+
+/* TIME SECTION */
+
+.time-section {
+    display: none;
+    margin-top: 25px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.time-section h3 {
+    margin-top: 0;
+}
+
+.selected-date {
+    color: #2563eb;
+}
+
+.time-info {
+    color: #6b7280;
+}
+
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.time-button {
+    background: white;
+    color: #2563eb;
+    border: 1px solid #93c5fd;
+    border-radius: 8px;
+    padding: 11px;
+    cursor: pointer;
+}
+
+.time-button:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* BOOKING MESSAGE */
+
+.booking-message {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #1e40af;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .header h1 {
+        font-size: 25px;
     }
 
     .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 20px;
+        padding: 0 10px;
+        margin: 20px auto;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 25px;
+    .calendar-container {
+        padding: 12px;
     }
 
-    .header h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
+    .calendar-top h2 {
+        font-size: 19px;
     }
 
-    .header p {
-      margin: 0;
-      color: #6b7280;
-    }
-
-    .calendar-box {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-    }
-
-    .calendar-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .calendar-header h2 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    button {
-      border: none;
-      background: #2563eb;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    button:hover {
-      background: #1d4ed8;
-    }
-
-    .weekdays,
-    .days {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
-    }
-
-    .weekday {
-      text-align: center;
-      font-weight: bold;
-      color: #6b7280;
-      padding: 10px 2px;
-      font-size: 13px;
+    .nav-button {
+        padding: 8px 11px;
+        font-size: 12px;
     }
 
     .day {
-      min-height: 85px;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 8px;
-      background: #fff;
-      position: relative;
+        min-height: 65px;
+        padding: 6px;
     }
 
     .day-number {
-      font-weight: bold;
-      margin-bottom: 6px;
+        font-size: 12px;
     }
 
-    .available {
-      cursor: pointer;
-      background: #eff6ff;
-      border-color: #93c5fd;
+    .available-label,
+    .unavailable-label {
+        font-size: 8px;
     }
 
-    .available:hover {
-      background: #dbeafe;
+    .weekday {
+        font-size: 10px;
+        padding: 7px 1px;
     }
+}
 
-    .unavailable {
-      background: #f9fafb;
-      color: #9ca3af;
-    }
-
-    .today {
-      border: 2px solid #2563eb;
-    }
-
-    .availability-label {
-      font-size: 11px;
-      color: #2563eb;
-      font-weight: bold;
-    }
-
-    .time-panel {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      border-radius: 12px;
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-    }
-
-    .time-panel h3 {
-      margin-top: 0;
-    }
-
-    .selected-date {
-      color: #2563eb;
-    }
-
-    .times {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .time-button {
-      background: white;
-      color: #2563eb;
-      border: 1px solid #93c5fd;
-    }
-
-    .time-button:hover {
-      background: #2563eb;
-      color: white;
-    }
-
-    .note {
-      margin-top: 20px;
-      text-align: center;
-      color: #6b7280;
-      font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        padding: 10px;
-        margin: 10px auto;
-      }
-
-      .calendar-box {
-        padding: 12px;
-      }
-
-      .calendar-header h2 {
-        font-size: 19px;
-      }
-
-      .day {
-        min-height: 65px;
-        padding: 5px;
-      }
-
-      .availability-label {
-        font-size: 9px;
-      }
-
-      .weekday {
-        font-size: 11px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 
 <body>
 
-  <div class="container">
 
-    <div class="header">
-      <h1>Onboarding Schedule</h1>
-      <p>Select an available date and time for your onboarding.</p>
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>Legacy Lifted Dispatch</h1>
+
+    <p>
+        Onboarding Appointment Schedule
+    </p>
+
+</div>
+
+
+<div class="container">
+
+
+<!-- INTRO -->
+
+<div class="intro">
+
+    <h2>Schedule Your Onboarding</h2>
+
+    <p>
+        Select an available weekday and choose a convenient time
+        for your onboarding appointment.
+    </p>
+
+    <p>
+        <strong>Available Monday–Friday | 8:00 AM–5:00 PM</strong>
+    </p>
+
+</div>
+
+
+<!-- CALENDAR -->
+
+<div class="calendar-container">
+
+
+    <div class="calendar-top">
+
+        <button
+            class="nav-button"
+            onclick="previousMonth()">
+
+            ‹ Previous
+
+        </button>
+
+
+        <h2 id="monthYear"></h2>
+
+
+        <button
+            class="nav-button"
+            onclick="nextMonth()">
+
+            Next ›
+
+        </button>
+
     </div>
 
-    <div class="calendar-box">
 
-      <div class="calendar-header">
-        <button onclick="previousMonth()">‹ Previous</button>
-        <h2 id="monthYear"></h2>
-        <button onclick="nextMonth()">Next ›</button>
-      </div>
+    <!-- WEEKDAYS -->
 
-      <div class="weekdays">
+    <div class="weekdays">
+
         <div class="weekday">Sun</div>
+
         <div class="weekday">Mon</div>
+
         <div class="weekday">Tue</div>
+
         <div class="weekday">Wed</div>
+
         <div class="weekday">Thu</div>
+
         <div class="weekday">Fri</div>
+
         <div class="weekday">Sat</div>
-      </div>
 
-      <div class="days" id="calendarDays"></div>
+    </div>
 
-      <div class="time-panel" id="timePanel">
+
+    <!-- CALENDAR DAYS -->
+
+    <div
+        class="calendar"
+        id="calendar">
+
+    </div>
+
+
+    <!-- TIME SELECTION -->
+
+    <div
+        class="time-section"
+        id="timeSection">
+
+
         <h3>
-          Available Times for
-          <span class="selected-date" id="selectedDate"></span>
+
+            Available Times
+
+            <span
+                class="selected-date"
+                id="selectedDate">
+
+            </span>
+
         </h3>
 
-        <p>Available hours: <strong>8:00 AM – 5:00 PM</strong></p>
 
-        <div class="times" id="times"></div>
-      </div>
+        <p class="time-info">
 
-      <div class="note">
-        Monday–Friday • 8:00 AM–5:00 PM
-      </div>
+            Available hours:
+
+            <strong>
+                8:00 AM – 5:00 PM
+            </strong>
+
+        </p>
+
+
+        <div
+            class="time-grid"
+            id="timeGrid">
+
+        </div>
+
+
+        <div class="booking-message">
+
+            After selecting a time, you will be redirected to
+            our Google Calendar booking page to complete your appointment.
+
+        </div>
+
 
     </div>
-  </div>
 
-  <script>
 
-    // YOUR GOOGLE CALENDAR BOOKING LINK
-    const bookingLink = "https://calendar.app.google/oTzwz2eRAX";
+</div>
 
-    // Current displayed month
-    let currentDate = new Date();
 
-    // Generate time slots
-    function generateTimes() {
+</div>
 
-      const times = [];
 
-      for (let hour = 8; hour < 17; hour++) {
+<!-- FOOTER -->
 
-        let hour12 = hour;
+<div class="footer">
+
+    © 2026 Legacy Lifted Dispatch
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   GOOGLE CALENDAR BOOKING LINK
+   ===================================================== */
+
+const GOOGLE_BOOKING_LINK =
+"https://calendar.app.google/oTzwz2eRAX";
+
+
+/* =====================================================
+   CURRENT MONTH
+   ===================================================== */
+
+let currentDate = new Date();
+
+
+/* =====================================================
+   MONTH NAMES
+   ===================================================== */
+
+const monthNames = [
+
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+
+];
+
+
+/* =====================================================
+   CREATE TIME SLOTS
+   ===================================================== */
+
+function createTimeSlots() {
+
+
+    const times = [];
+
+
+    for (
+        let hour = 8;
+        hour < 17;
+        hour++
+    ) {
+
+
+        let displayHour = hour;
 
         let period = "AM";
 
-        if (hour >= 12) {
-          period = "PM";
 
-          if (hour > 12) {
-            hour12 = hour - 12;
-          }
+        if (hour >= 12) {
+
+            period = "PM";
+
         }
 
-        times.push(`${hour12}:00 ${period}`);
-        times.push(`${hour12}:30 ${period}`);
-      }
 
-      // Add 5:00 PM
-      times.push("5:00 PM");
+        if (hour > 12) {
 
-      return times;
+            displayHour = hour - 12;
+
+        }
+
+
+        times.push(
+            displayHour + ":00 " + period
+        );
+
+
+        times.push(
+            displayHour + ":30 " + period
+        );
+
     }
 
-    // Display calendar
-    function renderCalendar() {
 
-      const year = currentDate.getFullYear();
-      const month = currentDate.getMonth();
+    times.push("5:00 PM");
 
-      const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
 
-      document.getElementById("monthYear").textContent =
-        `${monthNames[month]} ${year}`;
+    return times;
 
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
+}
 
-      const calendarDays = document.getElementById("calendarDays");
 
-      calendarDays.innerHTML = "";
+/* =====================================================
+   DISPLAY CALENDAR
+   ===================================================== */
 
-      // Empty spaces before first day
-      for (let i = 0; i < firstDay; i++) {
+function renderCalendar() {
 
-        const emptyDay = document.createElement("div");
 
-        emptyDay.className = "day";
+    const calendar =
+        document.getElementById("calendar");
 
-        emptyDay.style.visibility = "hidden";
 
-        calendarDays.appendChild(emptyDay);
-      }
+    calendar.innerHTML = "";
 
-      const today = new Date();
 
-      // Days
-      for (let day = 1; day <= daysInMonth; day++) {
+    const year =
+        currentDate.getFullYear();
 
-        const date = new Date(year, month, day);
 
-        const dayOfWeek = date.getDay();
+    const month =
+        currentDate.getMonth();
 
-        const dayElement = document.createElement("div");
 
-        dayElement.className = "day";
+    document.getElementById("monthYear")
+        .textContent =
+        monthNames[month] + " " + year;
 
-        const number = document.createElement("div");
 
-        number.className = "day-number";
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
 
-        number.textContent = day;
+
+    const totalDays =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    /* EMPTY CELLS */
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+
+        const empty =
+            document.createElement("div");
+
+
+        empty.className =
+            "day empty";
+
+
+        calendar.appendChild(empty);
+
+    }
+
+
+    /* TODAY */
+
+    const today =
+        new Date();
+
+
+    /* DAYS */
+
+    for (
+        let day = 1;
+        day <= totalDays;
+        day++
+    ) {
+
+
+        const date =
+            new Date(
+                year,
+                month,
+                day
+            );
+
+
+        const weekday =
+            date.getDay();
+
+
+        const dayElement =
+            document.createElement("div");
+
+
+        dayElement.className =
+            "day";
+
+
+        /* DAY NUMBER */
+
+        const number =
+            document.createElement("div");
+
+
+        number.className =
+            "day-number";
+
+
+        number.textContent =
+            day;
+
 
         dayElement.appendChild(number);
 
-        // Check if today
+
+        /* TODAY */
+
         if (
-          date.getDate() === today.getDate() &&
-          date.getMonth() === today.getMonth() &&
-          date.getFullYear() === today.getFullYear()
+
+            date.getDate() === today.getDate() &&
+
+            date.getMonth() === today.getMonth() &&
+
+            date.getFullYear() === today.getFullYear()
+
         ) {
-          dayElement.classList.add("today");
+
+
+            dayElement.classList.add(
+                "today"
+            );
+
         }
 
-        // Monday-Friday
-        if (dayOfWeek >= 1 && dayOfWeek <= 5) {
 
-          dayElement.classList.add("available");
+        /* WEEKDAY */
 
-          const label = document.createElement("div");
+        if (
 
-          label.className = "availability-label";
+            weekday >= 1 &&
+            weekday <= 5
 
-          label.textContent = "8 AM–5 PM";
+        ) {
 
-          dayElement.appendChild(label);
 
-          dayElement.onclick = function() {
+            dayElement.classList.add(
+                "available"
+            );
 
-            showTimes(date);
 
-          };
+            const label =
+                document.createElement("div");
 
-        } else {
 
-          dayElement.classList.add("unavailable");
+            label.className =
+                "available-label";
 
-          const label = document.createElement("div");
 
-          label.className = "availability-label";
+            label.textContent =
+                "8 AM – 5 PM";
 
-          label.style.color = "#9ca3af";
 
-          label.textContent = "Unavailable";
+            dayElement.appendChild(
+                label
+            );
 
-          dayElement.appendChild(label);
+
+            dayElement.onclick =
+                function() {
+
+                    showTimes(date);
+
+                };
+
+
         }
 
-        calendarDays.appendChild(dayElement);
-      }
+
+        /* WEEKEND */
+
+        else {
+
+
+            dayElement.classList.add(
+                "weekend"
+            );
+
+
+            const label =
+                document.createElement("div");
+
+
+            label.className =
+                "unavailable-label";
+
+
+            label.textContent =
+                "Unavailable";
+
+
+            dayElement.appendChild(
+                label
+            );
+
+        }
+
+
+        calendar.appendChild(
+            dayElement
+        );
+
     }
 
-    // Show available times
-    function showTimes(date) {
+}
 
-      const panel = document.getElementById("timePanel");
 
-      const selectedDate = document.getElementById("selectedDate");
+/* =====================================================
+   SHOW TIMES
+   ===================================================== */
 
-      const timesContainer = document.getElementById("times");
+function showTimes(date) {
 
-      const formattedDate = date.toLocaleDateString(
-        "en-US",
-        {
-          weekday: "long",
-          month: "long",
-          day: "numeric",
-          year: "numeric"
+
+    const timeSection =
+        document.getElementById(
+            "timeSection"
+        );
+
+
+    const selectedDate =
+        document.getElementById(
+            "selectedDate"
+        );
+
+
+    const timeGrid =
+        document.getElementById(
+            "timeGrid"
+        );
+
+
+    /* FORMAT DATE */
+
+    const formattedDate =
+        date.toLocaleDateString(
+            "en-US",
+            {
+
+                weekday: "long",
+
+                month: "long",
+
+                day: "numeric",
+
+                year: "numeric"
+
+            }
+        );
+
+
+    selectedDate.textContent =
+        " – " + formattedDate;
+
+
+    timeGrid.innerHTML = "";
+
+
+    /* CREATE BUTTONS */
+
+    const times =
+        createTimeSlots();
+
+
+    times.forEach(
+        function(time) {
+
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "time-button";
+
+
+            button.textContent =
+                time;
+
+
+            button.onclick =
+                function() {
+
+
+                    /*
+                    Open Google Calendar
+                    booking page.
+                    */
+
+                    window.open(
+                        GOOGLE_BOOKING_LINK,
+                        "_blank"
+                    );
+
+                };
+
+
+            timeGrid.appendChild(
+                button
+            );
+
         }
-      );
+    );
 
-      selectedDate.textContent = formattedDate;
 
-      timesContainer.innerHTML = "";
+    /* SHOW PANEL */
 
-      const times = generateTimes();
+    timeSection.style.display =
+        "block";
 
-      times.forEach(function(time) {
 
-        const button = document.createElement("button");
+    timeSection.scrollIntoView({
 
-        button.className = "time-button";
-
-        button.textContent = time;
-
-        button.onclick = function() {
-
-          /*
-            Google Calendar's booking page controls
-            the actual appointment availability.
-
-            Clicking a time opens your booking page.
-          */
-
-          window.open(bookingLink, "_blank");
-
-        };
-
-        timesContainer.appendChild(button);
-
-      });
-
-      panel.style.display = "block";
-
-      panel.scrollIntoView({
         behavior: "smooth",
+
         block: "nearest"
-      });
-    }
 
-    // Previous month
-    function previousMonth() {
+    });
 
-      currentDate.setMonth(currentDate.getMonth() - 1);
+}
 
-      renderCalendar();
 
-      document.getElementById("timePanel").style.display = "none";
-    }
+/* =====================================================
+   PREVIOUS MONTH
+   ===================================================== */
 
-    // Next month
-    function nextMonth() {
+function previousMonth() {
 
-      currentDate.setMonth(currentDate.getMonth() + 1);
 
-      renderCalendar();
+    currentDate.setMonth(
+        currentDate.getMonth() - 1
+    );
 
-      document.getElementById("timePanel").style.display = "none";
-    }
 
-    // Start calendar
     renderCalendar();
 
-  </script>
+
+    document.getElementById(
+        "timeSection"
+    ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   NEXT MONTH
+   ===================================================== */
+
+function nextMonth() {
+
+
+    currentDate.setMonth(
+        currentDate.getMonth() + 1
+    );
+
+
+    renderCalendar();
+
+
+    document.getElementById(
+        "timeSection"
+    ).style.display = "none";
+
+}
+
+
+/* =====================================================
+   START CALENDAR
+   ===================================================== */
+
+renderCalendar();
+
+
+</script>
+
 
 </body>
 </html>
