@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="Legacy Lifted Dispatch helps owner-operators find profitable loads, reduce deadhead, and stay moving with reliable dispatch support.">
+  <meta name="description" content="Legacy Lifted Dispatch helps owner-operators find profitable loads, reduce deadhead, and stay moving with reliable dispatch support." />
 
   <title>Legacy Lifted Dispatch</title>
 
   <style>
     :root {
       --black: #050505;
-      --black-light: #0c0c0c;
+      --black2: #0b0b0b;
       --card: #151515;
       --gold: #d6a93f;
       --gold-light: #f0cf7a;
       --white: #ffffff;
-      --text: #d0d0d0;
+      --text: #cccccc;
       --muted: #999999;
-      --border: rgba(214,169,63,0.28);
+      --border: rgba(214, 169, 63, 0.28);
     }
 
     * {
@@ -49,13 +49,10 @@
 
     .container {
       width: min(1180px, 92%);
-      margin: 0 auto;
+      margin: auto;
     }
 
-    /* =========================
-       TOP BAR
-    ========================= */
-
+    /* TOP BAR */
     .topbar {
       background: #000;
       border-bottom: 1px solid var(--border);
@@ -81,10 +78,6 @@
       color: #aaa;
     }
 
-    .contact-list a:hover {
-      color: var(--gold);
-    }
-
     .socials {
       display: flex;
       gap: 12px;
@@ -95,10 +88,7 @@
       font-weight: bold;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
+    /* HEADER */
     .site-header {
       background: #080808;
       border-bottom: 1px solid var(--border);
@@ -129,7 +119,6 @@
 
     .main-nav {
       display: flex;
-      align-items: center;
       gap: 27px;
     }
 
@@ -144,17 +133,14 @@
       color: var(--gold);
     }
 
-    /* =========================
-       BUTTONS
-    ========================= */
-
+    /* BUTTONS */
     .btn {
       display: inline-block;
       border-radius: 5px;
       padding: 12px 22px;
       font-weight: 700;
       cursor: pointer;
-      transition: .2s;
+      transition: 0.2s;
       text-align: center;
       border: 1px solid transparent;
     }
@@ -167,7 +153,6 @@
 
     .btn-gold:hover {
       background: var(--gold-light);
-      border-color: var(--gold-light);
       color: #000 !important;
     }
 
@@ -182,25 +167,22 @@
       color: #000 !important;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
+    /* HERO */
     .hero {
       background:
         radial-gradient(
           circle at 80% 30%,
-          rgba(214,169,63,.10),
+          rgba(214, 169, 63, 0.10),
           transparent 30%
         ),
-        linear-gradient(180deg,#080808,#111);
+        linear-gradient(180deg, #080808, #111);
       padding: 110px 0 100px;
       border-bottom: 1px solid var(--border);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 70px;
       align-items: center;
     }
@@ -215,7 +197,7 @@
 
     .hero h1 {
       color: #fff;
-      font-size: clamp(44px,6vw,72px);
+      font-size: clamp(44px, 6vw, 72px);
       line-height: 1.05;
       margin: 18px 0 24px;
     }
@@ -251,7 +233,7 @@
       display: flex;
       gap: 18px;
       padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     }
 
     .feature-row:first-child {
@@ -280,10 +262,7 @@
       font-size: 14px;
     }
 
-    /* =========================
-       SECTIONS
-    ========================= */
-
+    /* SECTIONS */
     .section {
       padding: 90px 0;
     }
@@ -304,7 +283,7 @@
 
     .section-heading h2 {
       color: #fff;
-      font-size: clamp(30px,4vw,44px);
+      font-size: clamp(30px, 4vw, 44px);
       margin: 12px 0;
     }
 
@@ -312,26 +291,23 @@
       color: #999;
     }
 
-    /* =========================
-       SERVICES
-    ========================= */
-
+    /* SERVICES */
     .services {
       background: #0b0b0b;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(4,1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 18px;
     }
 
     .service-card {
       background: var(--card);
-      border: 1px solid rgba(214,169,63,.18);
+      border: 1px solid rgba(214, 169, 63, 0.18);
       padding: 30px 24px;
       border-radius: 8px;
-      transition: .2s;
+      transition: 0.2s;
     }
 
     .service-card:hover {
@@ -354,10 +330,7 @@
       color: #999;
     }
 
-    /* =========================
-       ABOUT
-    ========================= */
-
+    /* ABOUT */
     .about {
       background: #080808;
       border-top: 1px solid var(--border);
@@ -382,17 +355,14 @@
       margin-bottom: 18px;
     }
 
-    /* =========================
-       PROCESS
-    ========================= */
-
+    /* PROCESS */
     .process {
       background: #101010;
     }
 
     .steps {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
     }
 
@@ -416,17 +386,14 @@
       color: #999;
     }
 
-    /* =========================
-       CAREERS
-    ========================= */
-
+    /* CAREERS */
     .careers {
       background: #090909;
     }
 
     .callout {
       border: 1px solid var(--border);
-      background: linear-gradient(135deg,#161616,#0d0d0d);
+      background: linear-gradient(135deg, #161616, #0d0d0d);
       padding: 45px;
       border-radius: 10px;
       display: flex;
@@ -445,67 +412,7 @@
       color: #999;
     }
 
-    /* =========================
-       BOOKING SECTION
-    ========================= */
-
-    .booking-section {
-      background: #080808;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .booking-box {
-      max-width: 850px;
-      margin: 0 auto;
-      background: #151515;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 45px;
-      text-align: center;
-    }
-
-    .booking-box h3 {
-      color: var(--gold-light);
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .booking-box p {
-      color: #aaa;
-      margin-bottom: 25px;
-    }
-
-    .booking-steps {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 15px;
-      margin: 30px 0;
-    }
-
-    .booking-step {
-      background: #0d0d0d;
-      border: 1px solid rgba(214,169,63,.18);
-      padding: 20px 12px;
-      border-radius: 7px;
-    }
-
-    .booking-step strong {
-      display: block;
-      color: var(--gold);
-      font-size: 24px;
-      margin-bottom: 5px;
-    }
-
-    .booking-step span {
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
+    /* CONTACT / FORM */
     .contact {
       background: #111;
     }
@@ -578,16 +485,19 @@
       gap: 15px;
     }
 
+    .contact-form button {
+      width: 100%;
+      font-size: 15px;
+    }
+
     .contact-form small {
       display: block;
       color: #777;
       margin-top: 12px;
+      text-align: center;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
+    /* FOOTER */
     footer {
       background: #000;
       border-top: 1px solid var(--border);
@@ -628,18 +538,14 @@
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding: 20px 0;
       color: #666;
       font-size: 12px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media(max-width:900px) {
-
+    /* MOBILE */
+    @media (max-width: 900px) {
       .main-nav {
         display: none;
       }
@@ -657,7 +563,7 @@
       }
 
       .card-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .steps {
@@ -674,8 +580,7 @@
       }
     }
 
-    @media(max-width:600px) {
-
+    @media (max-width: 600px) {
       .contact-list {
         gap: 5px 12px;
         font-size: 11px;
@@ -711,14 +616,6 @@
         font-size: 34px;
       }
 
-      .booking-box {
-        padding: 25px 18px;
-      }
-
-      .booking-steps {
-        grid-template-columns: 1fr;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr;
       }
@@ -728,12 +625,11 @@
 
 <body>
 
-  <!-- TOP BAR -->
+  <!-- TOP CONTACT BAR -->
   <div class="topbar">
     <div class="container topbar-inner">
 
       <div class="contact-list">
-
         <a href="tel:+18135750191">
           ☎ <span>(813) 575-0191</span>
         </a>
@@ -745,13 +641,12 @@
         <span>
           📍 7901 4th St N Ste 300, St. Petersburg, FL 33702
         </span>
-
       </div>
 
       <div class="socials">
         <a href="#" aria-label="Facebook">f</a>
         <a href="#" aria-label="Instagram">◎</a>
-        <a href="mailto:teamdispatch.legacylifted@gmail.com" aria-label="Email">✉</a>
+        <a href="mailto:teamdispatch.legacylifted@gmail.com">✉</a>
       </div>
 
     </div>
@@ -760,22 +655,21 @@
 
   <!-- HEADER -->
   <header class="site-header">
-
     <div class="container nav-wrap">
 
       <a class="brand" href="#home" aria-label="Legacy Lifted home">
-        <img src="legacy-lifted-logo.jpg" alt="Legacy Lifted logo">
+        <img
+          src="legacy-lifted-logo.jpg"
+          alt="Legacy Lifted Dispatch Logo"
+        />
       </a>
 
-      <nav class="main-nav" aria-label="Primary navigation">
-
+      <nav class="main-nav">
         <a class="active" href="#home">Home</a>
         <a href="#about">About Us</a>
         <a href="#services">Services</a>
         <a href="#careers">Careers</a>
-        <a href="#booking">Book</a>
-        <a href="#contact">Contact</a>
-
+        <a href="#contact">Get Started</a>
       </nav>
 
       <a class="btn btn-outline" href="#contact">
@@ -783,7 +677,6 @@
       </a>
 
     </div>
-
   </header>
 
 
@@ -791,7 +684,6 @@
 
     <!-- HERO -->
     <section class="hero">
-
       <div class="container hero-grid">
 
         <div class="hero-copy">
@@ -801,7 +693,7 @@
           </span>
 
           <h1>
-            Smart Dispatching.<br>
+            Smart Dispatching.<br />
             Stronger <span>Profits.</span>
           </h1>
 
@@ -829,72 +721,52 @@
         <div class="hero-features">
 
           <article class="feature-row">
-
             <div class="icon">◎</div>
-
             <div>
               <h3>Maximum Loads</h3>
-
               <p>
                 We search and negotiate loads that fit your equipment,
                 lane preferences, and revenue goals.
               </p>
             </div>
-
           </article>
 
-
           <article class="feature-row">
-
             <div class="icon">24</div>
-
             <div>
               <h3>24/7 Dispatch Support</h3>
-
               <p>
                 Consistent communication and dependable assistance
                 whenever you need it.
               </p>
             </div>
-
           </article>
 
-
           <article class="feature-row">
-
             <div class="icon">↝</div>
-
             <div>
               <h3>Smart Routing</h3>
-
               <p>
                 Efficient route planning helps reduce deadhead
                 and keeps more money in your pocket.
               </p>
             </div>
-
           </article>
 
-
           <article class="feature-row">
-
             <div class="icon">✓</div>
-
             <div>
               <h3>Reliable Partnership</h3>
-
               <p>
                 We treat your trucking business with the same care
                 and urgency as our own.
               </p>
             </div>
-
           </article>
 
         </div>
 
       </div>
-
     </section>
 
 
@@ -921,58 +793,39 @@
         <div class="card-grid">
 
           <article class="service-card">
-
             <div class="service-icon">⌕</div>
-
             <h3>Find the Right Loads</h3>
-
             <p>
               We locate and negotiate loads that match your truck type,
               preferred lanes, and schedule.
             </p>
-
           </article>
 
-
           <article class="service-card">
-
             <div class="service-icon">▤</div>
-
             <h3>Handle the Details</h3>
-
             <p>
               From broker setup and rate confirmations to paperwork
               and follow-up, we stay on top of the details.
             </p>
-
           </article>
 
-
           <article class="service-card">
-
             <div class="service-icon">◌</div>
-
             <h3>Keep You Informed</h3>
-
             <p>
               Clear updates, check calls, and communication throughout
               every load.
             </p>
-
           </article>
 
-
           <article class="service-card">
-
             <div class="service-icon">$</div>
-
             <h3>Improve Revenue</h3>
-
             <p>
               Better rate negotiation, smarter routes, and fewer empty
               miles help strengthen your bottom line.
             </p>
-
           </article>
 
         </div>
@@ -988,7 +841,6 @@
       <div class="container about-grid">
 
         <div>
-
           <span class="eyebrow">
             About Legacy Lifted
           </span>
@@ -996,21 +848,21 @@
           <h2>
             Your success is our mission.
           </h2>
-
         </div>
-
 
         <div>
 
           <p>
-            We are more than a dispatch service—we are a business partner
-            for owner-operators and small carriers. Our team focuses on
-            communication, load strategy, rate negotiation, and dependable support.
+            We are more than a dispatch service—we are a business
+            partner for owner-operators and small carriers.
+            Our team focuses on communication, load strategy,
+            rate negotiation, and dependable support.
           </p>
 
           <p>
-            Every decision is made with one goal in mind: helping your truck
-            stay productive while protecting your time and profitability.
+            Every decision is made with one goal in mind:
+            helping your truck stay productive while protecting
+            your time and profitability.
           </p>
 
         </div>
@@ -1039,7 +891,6 @@
         <div class="steps">
 
           <article>
-
             <strong>01</strong>
 
             <h3>
@@ -1047,15 +898,13 @@
             </h3>
 
             <p>
-              Share your equipment type, preferred lanes, home time,
-              and goals.
+              Share your equipment type, preferred lanes,
+              home time, and goals.
             </p>
-
           </article>
 
 
           <article>
-
             <strong>02</strong>
 
             <h3>
@@ -1066,12 +915,10 @@
               We find suitable opportunities and work to secure
               stronger rates.
             </p>
-
           </article>
 
 
           <article>
-
             <strong>03</strong>
 
             <h3>
@@ -1082,7 +929,6 @@
               We handle dispatch communication and keep the load
               organized from pickup to delivery.
             </p>
-
           </article>
 
         </div>
@@ -1114,13 +960,11 @@
 
         </div>
 
-
         <a
           class="btn btn-outline"
-          href="mailto:teamdispatch.legacylifted@gmail.com?subject=Career%20Inquiry">
-
+          href="mailto:teamdispatch.legacylifted@gmail.com?subject=Career%20Inquiry"
+        >
           Send Your Resume
-
         </a>
 
       </div>
@@ -1128,94 +972,9 @@
     </section>
 
 
-    <!-- SCHEDULING -->
-    <section class="section booking-section" id="booking">
+    <!-- CONTACT / ONBOARDING FORM -->
+    <!-- NO CALENDAR IS DISPLAYED HERE -->
 
-      <div class="container">
-
-        <div class="section-heading">
-
-          <span>
-            Schedule Your Onboarding
-          </span>
-
-          <h2>
-            Submit your information first
-          </h2>
-
-          <p>
-            Complete the form below and you'll be redirected to our
-            Google Calendar scheduling page to choose your meeting time.
-          </p>
-
-        </div>
-
-
-        <div class="booking-box">
-
-          <h3>
-            Ready to Get Started?
-          </h3>
-
-          <p>
-            We'll collect your information first, then send you directly
-            to our scheduling page to select an available onboarding time.
-          </p>
-
-
-          <div class="booking-steps">
-
-            <div class="booking-step">
-
-              <strong>01</strong>
-
-              <span>
-                Complete the form
-              </span>
-
-            </div>
-
-
-            <div class="booking-step">
-
-              <strong>02</strong>
-
-              <span>
-                Submit your information
-              </span>
-
-            </div>
-
-
-            <div class="booking-step">
-
-              <strong>03</strong>
-
-              <span>
-                Choose your meeting time
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <a
-            class="btn btn-gold"
-            href="#contact">
-
-            Complete Form & Schedule
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT / FORM -->
     <section class="section contact" id="contact">
 
       <div class="container contact-grid">
@@ -1232,8 +991,9 @@
 
           <p>
             Tell us about your truck and dispatch needs.
-            After you submit this form, you'll be redirected
-            to our Google Calendar to schedule your onboarding meeting.
+            After you submit this form, you will be redirected
+            directly to our Google scheduling page where you
+            can choose your onboarding meeting time.
           </p>
 
 
@@ -1248,7 +1008,8 @@
             </a>
 
             <span>
-              7901 4th St N Ste 300, St. Petersburg, FL 33702
+              7901 4th St N Ste 300,
+              St. Petersburg, FL 33702
             </span>
 
           </div>
@@ -1256,37 +1017,43 @@
         </div>
 
 
+        <!-- FORM -->
         <form
           class="contact-form"
           action="https://formsubmit.co/teamdispatch.legacylifted@gmail.com"
-          method="POST">
+          method="POST"
+        >
 
-          <!-- FORM SETTINGS -->
-
+          <!-- EMAIL SUBJECT -->
           <input
             type="hidden"
             name="_subject"
-            value="New Legacy Lifted Dispatch Inquiry">
+            value="New Legacy Lifted Dispatch Inquiry"
+          />
 
+          <!-- DISABLE CAPTCHA -->
           <input
             type="hidden"
             name="_captcha"
-            value="false">
+            value="false"
+          />
 
+          <!-- EMAIL FORMAT -->
           <input
             type="hidden"
             name="_template"
-            value="table">
+            value="table"
+          />
 
-          <!-- REDIRECT TO GOOGLE CALENDAR AFTER SUBMISSION -->
-
+          <!-- IMPORTANT:
+               AFTER FORM SUBMISSION THEY GO DIRECTLY
+               TO YOUR GOOGLE SCHEDULING PAGE -->
           <input
             type="hidden"
             name="_next"
-            value="https://calendar.app.google/kAQuqQPcbiajZH2c8">
+            value="https://calendar.app.google/kAQuqQPcbiajZH2c8"
+          />
 
-
-          <!-- NAME / PHONE -->
 
           <div class="form-row">
 
@@ -1297,7 +1064,8 @@
                 type="text"
                 name="name"
                 placeholder="Your full name"
-                required>
+                required
+              />
 
             </label>
 
@@ -1309,32 +1077,28 @@
                 type="tel"
                 name="phone"
                 placeholder="Your phone number"
-                required>
+                required
+              />
 
             </label>
 
           </div>
 
 
-          <!-- EMAIL -->
-
           <label>
-
             Email Address
 
             <input
               type="email"
               name="email"
               placeholder="Your email address"
-              required>
+              required
+            />
 
           </label>
 
 
-          <!-- EQUIPMENT -->
-
           <label>
-
             Equipment Type
 
             <select name="equipment" required>
@@ -1343,31 +1107,31 @@
                 Select equipment
               </option>
 
-              <option value="Dry Van">
+              <option>
                 Dry Van
               </option>
 
-              <option value="Reefer">
+              <option>
                 Reefer
               </option>
 
-              <option value="Flatbed">
+              <option>
                 Flatbed
               </option>
 
-              <option value="Box Truck">
+              <option>
                 Box Truck
               </option>
 
-              <option value="Power Only">
+              <option>
                 Power Only
               </option>
 
-              <option value="Hotshot">
+              <option>
                 Hotshot
               </option>
 
-              <option value="Other">
+              <option>
                 Other
               </option>
 
@@ -1376,34 +1140,31 @@
           </label>
 
 
-          <!-- MESSAGE -->
-
           <label>
-
             Tell us about your dispatch needs
 
             <textarea
               name="message"
               rows="5"
-              placeholder="Tell us about your truck, lanes, or dispatch needs"></textarea>
+              placeholder="Tell us about your truck, lanes, or dispatch needs"
+            ></textarea>
 
           </label>
 
 
-          <!-- SUBMIT -->
-
+          <!-- SUBMIT BUTTON -->
           <button
             class="btn btn-gold"
-            type="submit">
-
-            Submit & Schedule a Meeting
-
+            type="submit"
+          >
+            Submit &amp; Schedule a Meeting
           </button>
 
 
           <small>
-            After submitting this form, you will be redirected to our
-            Google Calendar scheduling page to choose your meeting time.
+            After submitting the form, you will be redirected
+            to our Google scheduling page to select an available
+            meeting time.
           </small>
 
         </form>
@@ -1416,7 +1177,6 @@
 
 
   <!-- FOOTER -->
-
   <footer>
 
     <div class="container footer-grid">
@@ -1425,7 +1185,8 @@
 
         <img
           src="legacy-lifted-logo.jpg"
-          alt="Legacy Lifted logo">
+          alt="Legacy Lifted Dispatch Logo"
+        />
 
         <p>
           Reliable truck dispatching support for owner-operators
@@ -1437,38 +1198,19 @@
 
       <div>
 
-        <h3>
-          Quick Links
-        </h3>
+        <h3>Quick Links</h3>
 
-        <a href="#about">
-          About Us
-        </a>
-
-        <a href="#services">
-          Services
-        </a>
-
-        <a href="#careers">
-          Careers
-        </a>
-
-        <a href="#booking">
-          Book Onboarding
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#careers">Careers</a>
+        <a href="#contact">Get Started</a>
 
       </div>
 
 
       <div>
 
-        <h3>
-          Contact
-        </h3>
+        <h3>Contact</h3>
 
         <a href="mailto:teamdispatch.legacylifted@gmail.com">
           Email Us
@@ -1486,7 +1228,8 @@
     <div class="container footer-bottom">
 
       © <span id="year"></span>
-      Legacy Lifted Dispatch. All rights reserved.
+      Legacy Lifted Dispatch.
+      All rights reserved.
 
     </div>
 
