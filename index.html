@@ -11,41 +11,42 @@
 <style>
 
 :root {
-  --black: #050505;
-  --black2: #0b0b0b;
-  --card: #151515;
-  --gold: #d6a93f;
-  --gold-light: #f0cf7a;
-  --white: #ffffff;
-  --gray: #a0a0a0;
-  --border: rgba(214,169,63,0.30);
+    --black: #050505;
+    --black2: #0b0b0b;
+    --card: #151515;
+    --gold: #d6a93f;
+    --gold-light: #f0cf7a;
+    --white: #ffffff;
+    --gray: #a0a0a0;
+    --border: rgba(214,169,63,.30);
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  background: var(--black);
-  color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
+    background: var(--black);
+    color: var(--white);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
-  width: 92%;
-  max-width: 1120px;
-  margin: auto;
+    width: 92%;
+    max-width: 1120px;
+    margin: auto;
 }
 
 
@@ -54,40 +55,40 @@ a {
 ========================= */
 
 header {
-  background: #050505;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: #050505;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .logo img {
-  width: 155px;
-  max-height: 62px;
-  object-fit: contain;
-  display: block;
+    width: 155px;
+    max-height: 62px;
+    object-fit: contain;
+    display: block;
 }
 
 nav {
-  display: flex;
-  gap: 28px;
+    display: flex;
+    gap: 28px;
 }
 
 nav a {
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 nav a:hover {
-  color: var(--gold);
+    color: var(--gold);
 }
 
 
@@ -96,334 +97,72 @@ nav a:hover {
 ========================= */
 
 .hero {
-  min-height: 650px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 
-  background:
-    radial-gradient(
-      circle at 78% 45%,
-      rgba(214,169,63,0.15),
-      transparent 34%
-    ),
-    linear-gradient(
-      120deg,
-      #050505,
-      #090909 55%,
-      #111111
-    );
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(214,169,63,.13),
+            transparent 40%
+        ),
+        linear-gradient(
+            180deg,
+            #050505,
+            #0b0b0b,
+            #050505
+        );
 
-  border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
-.hero-copy {
-  position: relative;
-  z-index: 10;
-  width: 54%;
-  padding: 90px 0;
+.hero-content {
+    max-width: 850px;
+    margin: auto;
+    padding: 80px 0;
 }
 
 .eyebrow {
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 18px;
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: clamp(44px, 6vw, 70px);
-  line-height: 1.02;
-  margin-bottom: 22px;
+    font-size: clamp(45px, 7vw, 76px);
+    line-height: 1.05;
+    font-weight: 800;
+    margin-bottom: 24px;
 }
 
 .hero h1 span {
-  color: var(--gold);
+    color: var(--gold);
 }
 
 .hero-description {
-  color: #b2b2b2;
-  font-size: 18px;
-  max-width: 530px;
-  line-height: 1.7;
+    color: #b8b8b8;
+    font-size: 19px;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: auto;
 }
 
 
 /* =========================
-   TRUCK GRAPHIC
+   GOLD LINE
 ========================= */
 
-.truck-scene {
-  position: absolute;
-  right: -25px;
-  bottom: 35px;
-  width: 56%;
-  height: 370px;
-  z-index: 3;
-}
-
-.road {
-  position: absolute;
-  left: 0;
-  bottom: 25px;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold),
-    transparent
-  );
-  opacity: .7;
-}
-
-.road::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 15px;
-  width: 100%;
-  height: 1px;
-  background: rgba(214,169,63,.25);
-}
-
-
-/* Truck common */
-
-.truck {
-  position: absolute;
-  bottom: 50px;
-  filter: drop-shadow(0 15px 15px rgba(0,0,0,.8));
-}
-
-.wheel {
-  position: absolute;
-  bottom: -16px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #050505;
-  border: 4px solid #777;
-  box-shadow:
-    inset 0 0 0 4px #151515;
-}
-
-
-/* =========================
-   DRY VAN
-========================= */
-
-.dry-van {
-  left: 0;
-  width: 50%;
-  height: 125px;
-  z-index: 3;
-}
-
-.dry-cab {
-  position: absolute;
-  left: 0;
-  bottom: 8px;
-  width: 31%;
-  height: 72%;
-  border: 3px solid var(--gold);
-  background: #101010;
-
-  clip-path: polygon(
-    15% 0,
-    82% 0,
-    100% 25%,
-    100% 100%,
-    0 100%,
-    0 25%
-  );
-}
-
-.dry-window {
-  position: absolute;
-  left: 16%;
-  top: 17%;
-  width: 64%;
-  height: 28%;
-  border: 2px solid var(--gold);
-  background: rgba(214,169,63,.08);
-}
-
-.dry-trailer {
-  position: absolute;
-  right: 0;
-  bottom: 8px;
-  width: 70%;
-  height: 78%;
-  border: 3px solid var(--gold);
-
-  background:
-    linear-gradient(
-      180deg,
-      #1a1a1a,
-      #090909
-    );
-}
-
-.dry-trailer::after {
-  content: "LEGACY";
-  position: absolute;
-  left: 20%;
-  top: 38%;
-  color: rgba(240,207,122,.50);
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.dry-van .wheel1 {
-  left: 12%;
-}
-
-.dry-van .wheel2 {
-  left: 72%;
-}
-
-.dry-van .wheel3 {
-  right: 3%;
-}
-
-
-/* =========================
-   REEFER
-========================= */
-
-.reefer {
-  left: 31%;
-  bottom: 85px;
-  width: 42%;
-  height: 115px;
-  transform: scale(.78);
-  opacity: .90;
-  z-index: 2;
-}
-
-.reefer-front {
-  position: absolute;
-  left: 0;
-  bottom: 8px;
-  width: 27%;
-  height: 72%;
-  border: 3px solid var(--gold);
-  background: #111;
-}
-
-.reefer-window {
-  position: absolute;
-  left: 15%;
-  top: 17%;
-  width: 65%;
-  height: 27%;
-  border: 2px solid var(--gold);
-}
-
-.reefer-body {
-  position: absolute;
-  right: 0;
-  bottom: 8px;
-  width: 76%;
-  height: 76%;
-  border: 3px solid var(--gold);
-  background: #0c0c0c;
-}
-
-.reefer-unit {
-  position: absolute;
-  left: 5%;
-  top: 8%;
-  width: 25%;
-  height: 23%;
-  border: 2px solid var(--gold);
-}
-
-.reefer-body::after {
-  content: "REEFER";
-  position: absolute;
-  left: 38%;
-  top: 40%;
-  color: rgba(240,207,122,.45);
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.reefer .wheel1 {
-  left: 12%;
-}
-
-.reefer .wheel2 {
-  right: 4%;
-}
-
-
-/* =========================
-   BOX TRUCK
-========================= */
-
-.box-truck {
-  right: 0;
-  bottom: 15px;
-  width: 33%;
-  height: 120px;
-  transform: scale(.75);
-  opacity: .82;
-  z-index: 4;
-}
-
-.box-cab {
-  position: absolute;
-  left: 0;
-  bottom: 8px;
-  width: 32%;
-  height: 64%;
-  border: 3px solid var(--gold);
-  background: #111;
-}
-
-.box-window {
-  position: absolute;
-  left: 15%;
-  top: 18%;
-  width: 65%;
-  height: 28%;
-  border: 2px solid var(--gold);
-}
-
-.box-body {
-  position: absolute;
-  right: 0;
-  bottom: 8px;
-  width: 71%;
-  height: 88%;
-  border: 3px solid var(--gold);
-  background: #111;
-}
-
-.box-body::after {
-  content: "BOX TRUCK";
-  position: absolute;
-  left: 24%;
-  top: 42%;
-  color: rgba(240,207,122,.45);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.box-truck .wheel1 {
-  left: 12%;
-}
-
-.box-truck .wheel2 {
-  right: 6%;
+.gold-line {
+    width: 90px;
+    height: 3px;
+    background: var(--gold);
+    margin: 25px auto;
 }
 
 
@@ -432,168 +171,174 @@ nav a:hover {
 ========================= */
 
 .services {
-  background: var(--black2);
-  padding: 75px 0;
-  border-bottom: 1px solid var(--border);
+    background: var(--black2);
+    padding: 75px 0;
+    border-bottom: 1px solid var(--border);
 }
 
 .section-heading {
-  text-align: center;
-  margin-bottom: 40px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .section-heading .eyebrow {
-  display: block;
-  margin-bottom: 8px;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .section-heading h2 {
-  font-size: 34px;
+    font-size: 34px;
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 18px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
 .service {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 28px 22px;
-  border-radius: 7px;
-  text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 30px 22px;
+    border-radius: 7px;
+    text-align: center;
+    transition: .2s;
+}
+
+.service:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
 }
 
 .service-icon {
-  color: var(--gold);
-  font-size: 28px;
-  margin-bottom: 10px;
+    color: var(--gold);
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 .service h3 {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .service p {
-  color: var(--gray);
-  font-size: 14px;
-  line-height: 1.6;
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 
 /* =========================
-   FORM
+   GET STARTED
 ========================= */
 
 .get-started {
-  background: #080808;
-  padding: 85px 0;
+    background: #080808;
+    padding: 85px 0;
 }
 
 .get-started-grid {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 60px;
-  align-items: start;
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 60px;
+    align-items: start;
 }
 
 .get-started-info h2 {
-  font-size: 40px;
-  line-height: 1.1;
-  margin: 8px 0 18px;
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 8px 0 18px;
 }
 
 .get-started-info p {
-  color: var(--gray);
-  line-height: 1.7;
+    color: var(--gray);
+    line-height: 1.7;
 }
 
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 25px;
 }
 
 .contact-info a {
-  color: var(--gold-light);
+    color: var(--gold-light);
 }
 
 .contact-info span {
-  color: #777;
+    color: #777;
 }
 
 .form-box {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  padding: 30px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 30px;
 }
 
 .form-box h3 {
-  color: var(--gold);
-  margin-bottom: 20px;
-  font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-size: 22px;
 }
 
 .form-group {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-  display: block;
-  color: #ddd;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 6px;
+    display: block;
+    color: #ddd;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
 input,
 select,
 textarea {
-  width: 100%;
-  background: #080808;
-  color: white;
-  border: 1px solid #444;
-  border-radius: 4px;
-  padding: 13px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+    width: 100%;
+    background: #080808;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  outline: none;
-  border-color: var(--gold);
+    outline: none;
+    border-color: var(--gold);
 }
 
 textarea {
-  resize: vertical;
+    resize: vertical;
 }
 
 .submit-button {
-  width: 100%;
-  border: 0;
-  border-radius: 4px;
-  background: var(--gold);
-  color: #000;
-  padding: 15px;
-  font-size: 15px;
-  font-weight: 900;
-  cursor: pointer;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    background: var(--gold);
+    color: #000;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
 }
 
 .submit-button:hover {
-  background: var(--gold-light);
+    background: var(--gold-light);
 }
 
 .form-note {
-  color: #777;
-  text-align: center;
-  font-size: 11px;
-  margin-top: 10px;
+    color: #777;
+    text-align: center;
+    font-size: 11px;
+    margin-top: 10px;
 }
 
 
@@ -602,36 +347,36 @@ textarea {
 ========================= */
 
 footer {
-  background: #000;
-  border-top: 1px solid var(--border);
-  padding: 32px 0;
+    background: #000;
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer img {
-  width: 130px;
-  max-height: 55px;
-  object-fit: contain;
+    width: 130px;
+    max-height: 55px;
+    object-fit: contain;
 }
 
 .footer-right {
-  text-align: right;
+    text-align: right;
 }
 
 .footer-right a {
-  display: block;
-  color: var(--gold-light);
-  font-size: 13px;
-  margin-bottom: 4px;
+    display: block;
+    color: var(--gold-light);
+    font-size: 13px;
+    margin-bottom: 4px;
 }
 
 .footer-right small {
-  color: #666;
+    color: #666;
 }
 
 
@@ -641,70 +386,55 @@ footer {
 
 @media (max-width: 850px) {
 
-  nav {
-    display: none;
-  }
+    nav {
+        display: none;
+    }
 
-  .hero {
-    min-height: 680px;
-  }
+    .hero {
+        min-height: 520px;
+    }
 
-  .hero-copy {
-    width: 100%;
-    padding: 70px 0 350px;
-  }
+    .hero-content {
+        padding: 70px 0;
+    }
 
-  .truck-scene {
-    width: 105%;
-    right: -5%;
-    bottom: 15px;
-    height: 300px;
-  }
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+    .get-started-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
 
-  .get-started-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
 
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .footer-right {
-    text-align: left;
-  }
+    .footer-right {
+        text-align: left;
+    }
 }
-
 
 @media (max-width: 500px) {
 
-  .hero h1 {
-    font-size: 43px;
-  }
+    .hero h1 {
+        font-size: 43px;
+    }
 
-  .hero-description {
-    font-size: 16px;
-  }
+    .hero-description {
+        font-size: 16px;
+    }
 
-  .truck-scene {
-    transform: scale(.82);
-    transform-origin: bottom right;
-  }
+    .form-box {
+        padding: 22px;
+    }
 
-  .form-box {
-    padding: 22px;
-  }
-
-  .get-started-info h2 {
-    font-size: 34px;
-  }
-
+    .get-started-info h2 {
+        font-size: 34px;
+    }
 }
 
 </style>
@@ -720,137 +450,61 @@ footer {
 
 <header>
 
-  <div class="container nav">
+<div class="container nav">
 
-    <a href="#home" class="logo">
+<a href="#home" class="logo">
 
-      <img
-        src="legacy-lifted-logo.jpg"
-        alt="Legacy Lifted Dispatch"
-      >
+<img
+src="legacy-lifted-logo.jpg"
+alt="Legacy Lifted Dispatch">
 
-    </a>
+</a>
 
-    <nav>
+<nav>
 
-      <a href="#home">
-        Home
-      </a>
+<a href="#home">Home</a>
 
-      <a href="#services">
-        Services
-      </a>
+<a href="#services">Services</a>
 
-      <a href="#get-started">
-        Get Started
-      </a>
+<a href="#get-started">Get Started</a>
 
-    </nav>
+</nav>
 
-  </div>
+</div>
 
 </header>
 
 
 
 <!-- =========================
-     HERO
+     CENTER HERO
 ========================= -->
 
-<section
-  class="hero"
-  id="home"
->
+<section class="hero" id="home">
 
-  <div class="container">
+<div class="container">
 
-    <div class="hero-copy">
+<div class="hero-content">
 
-      <div class="eyebrow">
-        Truck Dispatching for Owner-Operators
-      </div>
+<div class="eyebrow">
+Truck Dispatching for Owner-Operators
+</div>
 
-      <h1>
-        Truck Dispatching<br>
-        Made <span>Simple.</span>
-      </h1>
+<div class="gold-line"></div>
 
-      <p class="hero-description">
-        Find loads. Negotiate rates.
-        Keep your truck moving.
-      </p>
+<h1>
+Truck Dispatching<br>
+Made <span>Simple.</span>
+</h1>
 
-    </div>
+<p class="hero-description">
+Find loads. Negotiate rates.
+Keep your truck moving.
+</p>
 
+</div>
 
-    <!-- TRUCK GRAPHIC -->
-
-    <div class="truck-scene">
-
-      <div class="road"></div>
-
-
-      <!-- DRY VAN -->
-
-      <div class="truck dry-van">
-
-        <div class="dry-cab">
-
-          <div class="dry-window"></div>
-
-        </div>
-
-        <div class="dry-trailer"></div>
-
-        <div class="wheel wheel1"></div>
-        <div class="wheel wheel2"></div>
-        <div class="wheel wheel3"></div>
-
-      </div>
-
-
-      <!-- REEFER -->
-
-      <div class="truck reefer">
-
-        <div class="reefer-front">
-
-          <div class="reefer-window"></div>
-
-        </div>
-
-        <div class="reefer-body">
-
-          <div class="reefer-unit"></div>
-
-        </div>
-
-        <div class="wheel wheel1"></div>
-        <div class="wheel wheel2"></div>
-
-      </div>
-
-
-      <!-- BOX TRUCK -->
-
-      <div class="truck box-truck">
-
-        <div class="box-cab">
-
-          <div class="box-window"></div>
-
-        </div>
-
-        <div class="box-body"></div>
-
-        <div class="wheel wheel1"></div>
-        <div class="wheel wheel2"></div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
@@ -860,342 +514,315 @@ footer {
      SERVICES
 ========================= -->
 
-<section
-  class="services"
-  id="services"
->
+<section class="services" id="services">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-      <span class="eyebrow">
-        What We Do
-      </span>
+<span class="eyebrow">
+What We Do
+</span>
 
-      <h2>
-        Simple. Reliable. Professional.
-      </h2>
+<h2>
+Simple. Reliable. Professional.
+</h2>
 
-    </div>
+</div>
 
 
-    <div class="services-grid">
+<div class="services-grid">
 
 
-      <div class="service">
+<div class="service">
 
-        <div class="service-icon">
-          ◉
-        </div>
+<div class="service-icon">
+◉
+</div>
 
-        <h3>
-          Find Loads
-        </h3>
+<h3>
+Find Loads
+</h3>
 
-        <p>
-          We search for loads that fit your
-          equipment and preferred lanes.
-        </p>
+<p>
+We search for loads that fit your
+equipment and preferred lanes.
+</p>
 
-      </div>
-
-
-      <div class="service">
-
-        <div class="service-icon">
-          $
-        </div>
-
-        <h3>
-          Negotiate Rates
-        </h3>
-
-        <p>
-          We work to secure competitive rates
-          for your business.
-        </p>
-
-      </div>
+</div>
 
 
-      <div class="service">
+<div class="service">
 
-        <div class="service-icon">
-          ✓
-        </div>
+<div class="service-icon">
+$
+</div>
 
-        <h3>
-          Dispatch Support
-        </h3>
+<h3>
+Negotiate Rates
+</h3>
 
-        <p>
-          We handle dispatch communication
-          so you can focus on driving.
-        </p>
+<p>
+We work to secure competitive rates
+for your business.
+</p>
 
-      </div>
+</div>
 
 
-    </div>
+<div class="service">
 
-  </div>
+<div class="service-icon">
+✓
+</div>
+
+<h3>
+Dispatch Support
+</h3>
+
+<p>
+We handle dispatch communication
+so you can focus on driving.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
 
 <!-- =========================
-     FORM / SCHEDULING
+     FORM
 ========================= -->
 
-<section
-  class="get-started"
-  id="get-started"
+<section class="get-started" id="get-started">
+
+<div class="container">
+
+<div class="get-started-grid">
+
+
+<div class="get-started-info">
+
+<div class="eyebrow">
+Get Started
+</div>
+
+<h2>
+Ready to get moving?
+</h2>
+
+<p>
+Tell us about your truck.
+Submit the form and choose your
+onboarding time.
+</p>
+
+
+<div class="contact-info">
+
+<a href="tel:+18135750191">
+(813) 575-0191
+</a>
+
+<a href="mailto:teamdispatch.legacylifted@gmail.com">
+teamdispatch.legacylifted@gmail.com
+</a>
+
+<span>
+7901 4th St N Ste 300,
+St. Petersburg, FL 33702
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="form-box">
+
+<h3>
+Start Here
+</h3>
+
+
+<form
+action="https://formsubmit.co/teamdispatch.legacylifted@gmail.com"
+method="POST"
 >
 
-  <div class="container">
 
-    <div class="get-started-grid">
+<input
+type="hidden"
+name="_subject"
+value="New Legacy Lifted Dispatch Lead"
+>
 
+<input
+type="hidden"
+name="_captcha"
+value="false"
+>
 
-      <!-- INFORMATION -->
+<input
+type="hidden"
+name="_template"
+value="table"
+>
 
-      <div class="get-started-info">
 
-        <div class="eyebrow">
-          Get Started
-        </div>
+<!-- REDIRECT TO GOOGLE SCHEDULING AFTER SUBMISSION -->
 
-        <h2>
-          Ready to get moving?
-        </h2>
+<input
+type="hidden"
+name="_next"
+value="https://calendar.app.google/kAQuqQPcbiajZH2c8"
+>
 
-        <p>
-          Tell us about your truck.
-          Submit the form and choose your
-          onboarding time.
-        </p>
 
+<div class="form-group">
 
-        <div class="contact-info">
+<label>
+Full Name
+</label>
 
-          <a href="tel:+18135750191">
-            (813) 575-0191
-          </a>
+<input
+type="text"
+name="name"
+placeholder="Full name"
+required
+>
 
-          <a href="mailto:teamdispatch.legacylifted@gmail.com">
-            teamdispatch.legacylifted@gmail.com
-          </a>
+</div>
 
-          <span>
-            7901 4th St N Ste 300,
-            St. Petersburg, FL 33702
-          </span>
 
-        </div>
+<div class="form-group">
 
-      </div>
+<label>
+Phone Number
+</label>
 
+<input
+type="tel"
+name="phone"
+placeholder="Phone number"
+required
+>
 
+</div>
 
-      <!-- FORM -->
 
-      <div class="form-box">
+<div class="form-group">
 
-        <h3>
-          Start Here
-        </h3>
+<label>
+Email Address
+</label>
 
+<input
+type="email"
+name="email"
+placeholder="Email address"
+required
+>
 
-        <form
-          action="https://formsubmit.co/teamdispatch.legacylifted@gmail.com"
-          method="POST"
-        >
+</div>
 
 
-          <!-- EMAIL SUBJECT -->
+<div class="form-group">
 
-          <input
-            type="hidden"
-            name="_subject"
-            value="New Legacy Lifted Dispatch Lead"
-          >
+<label>
+Equipment Type
+</label>
 
+<select
+name="equipment"
+required
+>
 
-          <!-- DISABLE CAPTCHA -->
+<option value="">
+Select equipment
+</option>
 
-          <input
-            type="hidden"
-            name="_captcha"
-            value="false"
-          >
+<option>
+Dry Van
+</option>
 
+<option>
+Reefer
+</option>
 
-          <!-- EMAIL FORMAT -->
+<option>
+Flatbed
+</option>
 
-          <input
-            type="hidden"
-            name="_template"
-            value="table"
-          >
+<option>
+Box Truck
+</option>
 
+<option>
+Power Only
+</option>
 
-          <!-- AFTER SUBMISSION
-               GO TO GOOGLE SCHEDULING -->
+<option>
+Hotshot
+</option>
 
-          <input
-            type="hidden"
-            name="_next"
-            value="https://calendar.app.google/kAQuqQPcbiajZH2c8"
-          >
+<option>
+Other
+</option>
 
+</select>
 
-          <!-- NAME -->
+</div>
 
-          <div class="form-group">
 
-            <label>
-              Full Name
-            </label>
+<div class="form-group">
 
-            <input
-              type="text"
-              name="name"
-              placeholder="Full name"
-              required
-            >
+<label>
+Dispatch Needs
+</label>
 
-          </div>
+<textarea
+name="message"
+rows="4"
+placeholder="Tell us briefly about your dispatch needs"
+></textarea>
 
+</div>
 
-          <!-- PHONE -->
 
-          <div class="form-group">
+<button
+type="submit"
+class="submit-button"
+>
 
-            <label>
-              Phone Number
-            </label>
+SUBMIT &amp; SCHEDULE
 
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone number"
-              required
-            >
+</button>
 
-          </div>
 
+<div class="form-note">
 
-          <!-- EMAIL -->
+After submitting the form,
+you'll be redirected to our
+scheduling page.
 
-          <div class="form-group">
+</div>
 
-            <label>
-              Email Address
-            </label>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              required
-            >
+</form>
 
-          </div>
+</div>
 
+</div>
 
-          <!-- EQUIPMENT -->
-
-          <div class="form-group">
-
-            <label>
-              Equipment Type
-            </label>
-
-            <select
-              name="equipment"
-              required
-            >
-
-              <option value="">
-                Select equipment
-              </option>
-
-              <option>
-                Dry Van
-              </option>
-
-              <option>
-                Reefer
-              </option>
-
-              <option>
-                Flatbed
-              </option>
-
-              <option>
-                Box Truck
-              </option>
-
-              <option>
-                Power Only
-              </option>
-
-              <option>
-                Hotshot
-              </option>
-
-              <option>
-                Other
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <!-- MESSAGE -->
-
-          <div class="form-group">
-
-            <label>
-              Dispatch Needs
-            </label>
-
-            <textarea
-              name="message"
-              rows="4"
-              placeholder="Tell us briefly about your dispatch needs"
-            ></textarea>
-
-          </div>
-
-
-          <!-- SUBMIT -->
-
-          <button
-            type="submit"
-            class="submit-button"
-          >
-            SUBMIT &amp; SCHEDULE
-          </button>
-
-
-          <div class="form-note">
-            After submitting the form,
-            you'll be redirected to our
-            scheduling page.
-          </div>
-
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
@@ -1207,31 +834,30 @@ footer {
 
 <footer>
 
-  <div class="container footer">
+<div class="container footer">
 
-    <img
-      src="legacy-lifted-logo.jpg"
-      alt="Legacy Lifted Dispatch"
-    >
+<img
+src="legacy-lifted-logo.jpg"
+alt="Legacy Lifted Dispatch"
+>
 
+<div class="footer-right">
 
-    <div class="footer-right">
+<a href="tel:+18135750191">
+(813) 575-0191
+</a>
 
-      <a href="tel:+18135750191">
-        (813) 575-0191
-      </a>
+<a href="mailto:teamdispatch.legacylifted@gmail.com">
+teamdispatch.legacylifted@gmail.com
+</a>
 
-      <a href="mailto:teamdispatch.legacylifted@gmail.com">
-        teamdispatch.legacylifted@gmail.com
-      </a>
+<small>
+© 2026 Legacy Lifted Dispatch
+</small>
 
-      <small>
-        © 2026 Legacy Lifted Dispatch
-      </small>
+</div>
 
-    </div>
-
-  </div>
+</div>
 
 </footer>
 
