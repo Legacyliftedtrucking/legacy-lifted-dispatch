@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Legacy Lifted Dispatch - Truck dispatching for owner-operators.">
+  <meta name="description" content="Legacy Lifted Dispatch provides reliable truck dispatching for owner-operators.">
 
   <title>Legacy Lifted Dispatch</title>
 
   <style>
+    :root {
+      --black: #050505;
+      --black-soft: #0b0b0b;
+      --card: #141414;
+      --gold: #d6a93f;
+      --gold-light: #f0cf7a;
+      --white: #ffffff;
+      --gray: #999999;
+      --border: rgba(214,169,63,.30);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -21,8 +32,9 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #050505;
-      color: #ffffff;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
     }
 
     a {
@@ -31,22 +43,8 @@
 
     .container {
       width: 92%;
-      max-width: 1050px;
+      max-width: 1120px;
       margin: auto;
-    }
-
-    /* =========================
-       COLORS
-    ========================= */
-
-    :root {
-      --black: #050505;
-      --black2: #101010;
-      --gold: #d6a93f;
-      --light-gold: #f0cf7a;
-      --white: #ffffff;
-      --gray: #999999;
-      --border: rgba(214,169,63,0.30);
     }
 
     /* =========================
@@ -62,7 +60,7 @@
     }
 
     .nav {
-      min-height: 78px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -78,31 +76,17 @@
 
     nav {
       display: flex;
-      gap: 25px;
+      gap: 28px;
     }
 
     nav a {
       color: #ffffff;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 700;
     }
 
     nav a:hover {
       color: var(--gold);
-    }
-
-    .nav-button {
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 10px 18px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 13px;
-    }
-
-    .nav-button:hover {
-      background: var(--gold);
-      color: #000;
     }
 
     /* =========================
@@ -113,18 +97,29 @@
       min-height: 650px;
       display: flex;
       align-items: center;
+      position: relative;
+      overflow: hidden;
+
       background:
         radial-gradient(
-          circle at 75% 40%,
-          rgba(214,169,63,0.12),
-          transparent 35%
+          circle at 78% 45%,
+          rgba(214,169,63,.12),
+          transparent 33%
         ),
-        #050505;
+        linear-gradient(
+          135deg,
+          #050505 0%,
+          #090909 55%,
+          #111 100%
+        );
+
       border-bottom: 1px solid var(--border);
     }
 
     .hero-content {
-      max-width: 720px;
+      position: relative;
+      z-index: 3;
+      width: 55%;
       padding: 90px 0;
     }
 
@@ -133,12 +128,12 @@
       text-transform: uppercase;
       letter-spacing: 3px;
       font-size: 12px;
-      font-weight: bold;
+      font-weight: 800;
       margin-bottom: 18px;
     }
 
     .hero h1 {
-      font-size: clamp(42px, 7vw, 70px);
+      font-size: clamp(44px, 6vw, 70px);
       line-height: 1.03;
       margin-bottom: 22px;
     }
@@ -147,35 +142,246 @@
       color: var(--gold);
     }
 
-    .hero p {
-      color: #b5b5b5;
+    .hero-description {
+      color: #b7b7b7;
       font-size: 18px;
-      max-width: 600px;
+      max-width: 570px;
       line-height: 1.7;
-      margin-bottom: 30px;
-    }
-
-    .hero-button {
-      display: inline-block;
-      background: var(--gold);
-      color: #000;
-      padding: 14px 28px;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    .hero-button:hover {
-      background: var(--light-gold);
     }
 
     /* =========================
-       SIMPLE SERVICES
+       TRUCK DESIGN
+    ========================= */
+
+    .truck-scene {
+      position: absolute;
+      right: -25px;
+      bottom: 75px;
+      width: 50%;
+      height: 360px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .road {
+      position: absolute;
+      bottom: 35px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+      opacity: .65;
+    }
+
+    .road::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 100%;
+      height: 1px;
+      background: rgba(214,169,63,.25);
+    }
+
+    .truck {
+      position: absolute;
+      bottom: 45px;
+      height: 110px;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.8));
+    }
+
+    /* Semi */
+
+    .semi {
+      left: 3%;
+      width: 47%;
+    }
+
+    .semi-cab {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 34%;
+      height: 70%;
+      border: 3px solid var(--gold);
+      background: #111;
+      clip-path: polygon(
+        15% 0,
+        82% 0,
+        100% 25%,
+        100% 100%,
+        0 100%,
+        0 25%
+      );
+    }
+
+    .semi-cab::before {
+      content: "";
+      position: absolute;
+      left: 16%;
+      top: 18%;
+      width: 65%;
+      height: 27%;
+      border: 2px solid var(--gold);
+      background: rgba(214,169,63,.08);
+    }
+
+    .semi-trailer {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      width: 68%;
+      height: 72%;
+      border: 3px solid var(--gold);
+      background: linear-gradient(
+        180deg,
+        #181818,
+        #0a0a0a
+      );
+    }
+
+    .semi-trailer::after {
+      content: "LEGACY";
+      position: absolute;
+      left: 18%;
+      top: 36%;
+      color: rgba(240,207,122,.55);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -13px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 4px solid #777;
+      background: #050505;
+      box-shadow: inset 0 0 0 4px #151515;
+    }
+
+    .semi .wheel.one {
+      left: 13%;
+    }
+
+    .semi .wheel.two {
+      left: 72%;
+    }
+
+    .semi .wheel.three {
+      right: 4%;
+    }
+
+    /* Reefer */
+
+    .reefer {
+      right: 20%;
+      bottom: 80px;
+      width: 38%;
+      transform: scale(.78);
+      opacity: .9;
+    }
+
+    .reefer-body {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      width: 76%;
+      height: 72%;
+      border: 3px solid var(--gold);
+      background: #0c0c0c;
+    }
+
+    .reefer-front {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 25%;
+      height: 72%;
+      border: 3px solid var(--gold);
+      background: #121212;
+    }
+
+    .reefer-unit {
+      position: absolute;
+      left: 5%;
+      top: 8%;
+      width: 80%;
+      height: 22%;
+      border: 2px solid var(--gold);
+    }
+
+    .reefer .wheel.one {
+      left: 12%;
+    }
+
+    .reefer .wheel.two {
+      right: 5%;
+    }
+
+    /* Box Truck */
+
+    .box-truck {
+      right: -2%;
+      bottom: 10px;
+      width: 30%;
+      transform: scale(.72);
+      opacity: .8;
+    }
+
+    .box-cab {
+      position: absolute;
+      left: 0;
+      bottom: 10px;
+      width: 32%;
+      height: 62%;
+      border: 3px solid var(--gold);
+      background: #111;
+    }
+
+    .box-body {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      width: 72%;
+      height: 88%;
+      border: 3px solid var(--gold);
+      background: #111;
+    }
+
+    .box-body::after {
+      content: "BOX";
+      position: absolute;
+      top: 40%;
+      left: 30%;
+      color: rgba(240,207,122,.45);
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .box-truck .wheel.one {
+      left: 12%;
+    }
+
+    .box-truck .wheel.two {
+      right: 7%;
+    }
+
+    /* =========================
+       SERVICES
     ========================= */
 
     .services {
+      background: var(--black-soft);
       padding: 75px 0;
-      background: #0b0b0b;
+      border-bottom: 1px solid var(--border);
     }
 
     .section-title {
@@ -188,7 +394,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 800;
     }
 
     .section-title h2 {
@@ -198,21 +404,21 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 18px;
     }
 
     .service {
-      background: #151515;
+      background: var(--card);
       border: 1px solid var(--border);
       padding: 28px 22px;
-      border-radius: 6px;
+      border-radius: 7px;
       text-align: center;
     }
 
     .service-icon {
       color: var(--gold);
-      font-size: 27px;
+      font-size: 28px;
       margin-bottom: 12px;
     }
 
@@ -224,7 +430,6 @@
     .service p {
       color: var(--gray);
       font-size: 14px;
-      line-height: 1.6;
     }
 
     /* =========================
@@ -234,12 +439,11 @@
     .get-started {
       padding: 85px 0;
       background: #080808;
-      border-top: 1px solid var(--border);
     }
 
     .get-started-wrapper {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
+      grid-template-columns: .8fr 1.2fr;
       gap: 60px;
       align-items: start;
     }
@@ -263,17 +467,17 @@
     }
 
     .contact-info a {
-      color: var(--light-gold);
+      color: var(--gold-light);
     }
 
     .contact-info span {
-      color: #999;
+      color: var(--gray);
     }
 
     /* FORM */
 
     .form-box {
-      background: #151515;
+      background: var(--card);
       border: 1px solid var(--border);
       padding: 30px;
       border-radius: 7px;
@@ -291,8 +495,8 @@
 
     .form-group label {
       display: block;
-      font-size: 13px;
       color: #ddd;
+      font-size: 13px;
       font-weight: bold;
       margin-bottom: 6px;
     }
@@ -301,11 +505,11 @@
     select,
     textarea {
       width: 100%;
+      padding: 13px;
       background: #080808;
       border: 1px solid #444;
-      color: #ffffff;
-      padding: 13px;
       border-radius: 4px;
+      color: white;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 14px;
     }
@@ -323,27 +527,25 @@
 
     .submit-button {
       width: 100%;
-      border: none;
+      padding: 15px;
+      border: 0;
+      border-radius: 4px;
       background: var(--gold);
       color: #000;
-      padding: 15px;
-      border-radius: 4px;
-      font-weight: bold;
       font-size: 15px;
+      font-weight: 800;
       cursor: pointer;
-      margin-top: 5px;
     }
 
     .submit-button:hover {
-      background: var(--light-gold);
+      background: var(--gold-light);
     }
 
     .form-note {
-      text-align: center;
       color: #777;
+      text-align: center;
       font-size: 11px;
       margin-top: 12px;
-      line-height: 1.5;
     }
 
     /* =========================
@@ -364,7 +566,9 @@
     }
 
     .footer-logo img {
-      width: 125px;
+      width: 130px;
+      max-height: 60px;
+      object-fit: contain;
     }
 
     .footer-contact {
@@ -372,13 +576,13 @@
     }
 
     .footer-contact a {
-      color: var(--light-gold);
       display: block;
+      color: var(--gold-light);
       margin-bottom: 5px;
     }
 
     .footer-contact span {
-      color: #777;
+      color: #666;
       font-size: 12px;
     }
 
@@ -386,13 +590,9 @@
        MOBILE
     ========================= */
 
-    @media (max-width: 800px) {
+    @media(max-width:850px) {
 
       nav {
-        display: none;
-      }
-
-      .nav-button {
         display: none;
       }
 
@@ -401,7 +601,15 @@
       }
 
       .hero-content {
-        padding: 75px 0;
+        width: 100%;
+        padding: 75px 0 340px;
+      }
+
+      .truck-scene {
+        width: 95%;
+        right: 2%;
+        bottom: 20px;
+        height: 260px;
       }
 
       .services-grid {
@@ -423,14 +631,19 @@
       }
     }
 
-    @media (max-width: 500px) {
+    @media(max-width:500px) {
 
       .hero h1 {
         font-size: 43px;
       }
 
-      .hero p {
+      .hero-description {
         font-size: 16px;
+      }
+
+      .truck-scene {
+        transform: scale(.9);
+        transform-origin: bottom right;
       }
 
       .form-box {
@@ -441,15 +654,12 @@
         font-size: 34px;
       }
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <!-- HEADER -->
 
   <header>
 
@@ -468,18 +678,12 @@
         <a href="#get-started">Get Started</a>
       </nav>
 
-      <a href="#get-started" class="nav-button">
-        GET STARTED
-      </a>
-
     </div>
 
   </header>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
 
   <section class="hero" id="home">
 
@@ -496,17 +700,66 @@
           Made <span>Simple.</span>
         </h1>
 
-        <p>
+        <p class="hero-description">
           Find loads. Negotiate rates.
           Keep your truck moving.
         </p>
 
-        <a
-          href="#get-started"
-          class="hero-button"
-        >
-          GET STARTED
-        </a>
+      </div>
+
+
+      <!-- TRUCK DESIGN -->
+
+      <div class="truck-scene">
+
+        <div class="road"></div>
+
+
+        <!-- SEMI / DRY VAN -->
+
+        <div class="truck semi">
+
+          <div class="semi-cab"></div>
+
+          <div class="semi-trailer"></div>
+
+          <div class="wheel one"></div>
+          <div class="wheel two"></div>
+          <div class="wheel three"></div>
+
+        </div>
+
+
+        <!-- REEFER -->
+
+        <div class="truck reefer">
+
+          <div class="reefer-front">
+
+            <div class="reefer-unit"></div>
+
+          </div>
+
+          <div class="reefer-body"></div>
+
+          <div class="wheel one"></div>
+          <div class="wheel two"></div>
+
+        </div>
+
+
+        <!-- BOX TRUCK -->
+
+        <div class="truck box-truck">
+
+          <div class="box-cab"></div>
+
+          <div class="box-body"></div>
+
+          <div class="wheel one"></div>
+          <div class="wheel two"></div>
+
+        </div>
 
       </div>
 
@@ -515,9 +768,7 @@
   </section>
 
 
-  <!-- =========================
-       SERVICES
-  ========================= -->
+  <!-- SERVICES -->
 
   <section class="services" id="services">
 
@@ -525,9 +776,7 @@
 
       <div class="section-title">
 
-        <span>
-          What We Do
-        </span>
+        <span>What We Do</span>
 
         <h2>
           Simple. Reliable. Professional.
@@ -549,8 +798,8 @@
           </h3>
 
           <p>
-            We search for loads that fit your truck
-            and preferred lanes.
+            We search for loads that fit your
+            equipment and preferred lanes.
           </p>
 
         </div>
@@ -585,8 +834,8 @@
           </h3>
 
           <p>
-            We handle communication and dispatch
-            details so you can focus on driving.
+            We handle dispatch communication
+            so you can focus on driving.
           </p>
 
         </div>
@@ -598,21 +847,14 @@
   </section>
 
 
-  <!-- =========================
-       GET STARTED + FORM
-  ========================= -->
+  <!-- GET STARTED / FORM -->
 
-  <section
-    class="get-started"
-    id="get-started"
-  >
+  <section class="get-started" id="get-started">
 
     <div class="container">
 
       <div class="get-started-wrapper">
 
-
-        <!-- LEFT SIDE -->
 
         <div class="get-started-info">
 
@@ -650,7 +892,7 @@
         </div>
 
 
-        <!-- FORM -->
+        <!-- DIRECT FORM -->
 
         <div class="form-box">
 
@@ -658,13 +900,10 @@
             Start Here
           </h3>
 
-
           <form
             action="https://formsubmit.co/teamdispatch.legacylifted@gmail.com"
             method="POST"
           >
-
-            <!-- EMAIL SUBJECT -->
 
             <input
               type="hidden"
@@ -672,17 +911,11 @@
               value="New Legacy Lifted Dispatch Lead"
             >
 
-
-            <!-- NO CAPTCHA -->
-
             <input
               type="hidden"
               name="_captcha"
               value="false"
             >
-
-
-            <!-- EMAIL FORMAT -->
 
             <input
               type="hidden"
@@ -690,10 +923,8 @@
               value="table"
             >
 
-
-            <!-- AFTER FORM SUBMISSION:
-                 SEND CUSTOMER DIRECTLY TO
-                 GOOGLE SCHEDULING -->
+            <!-- AFTER SUBMITTING:
+                 GO DIRECTLY TO GOOGLE SCHEDULING -->
 
             <input
               type="hidden"
@@ -701,8 +932,6 @@
               value="https://calendar.app.google/kAQuqQPcbiajZH2c8"
             >
 
-
-            <!-- NAME -->
 
             <div class="form-group">
 
@@ -720,8 +949,6 @@
             </div>
 
 
-            <!-- PHONE -->
-
             <div class="form-group">
 
               <label>
@@ -737,8 +964,6 @@
 
             </div>
 
-
-            <!-- EMAIL -->
 
             <div class="form-group">
 
@@ -756,8 +981,6 @@
             </div>
 
 
-            <!-- EQUIPMENT -->
-
             <div class="form-group">
 
               <label>
@@ -773,40 +996,18 @@
                   Select equipment
                 </option>
 
-                <option>
-                  Dry Van
-                </option>
-
-                <option>
-                  Reefer
-                </option>
-
-                <option>
-                  Flatbed
-                </option>
-
-                <option>
-                  Box Truck
-                </option>
-
-                <option>
-                  Power Only
-                </option>
-
-                <option>
-                  Hotshot
-                </option>
-
-                <option>
-                  Other
-                </option>
+                <option>Dry Van</option>
+                <option>Reefer</option>
+                <option>Flatbed</option>
+                <option>Box Truck</option>
+                <option>Power Only</option>
+                <option>Hotshot</option>
+                <option>Other</option>
 
               </select>
 
             </div>
 
-
-            <!-- MESSAGE -->
 
             <div class="form-group">
 
@@ -823,8 +1024,6 @@
             </div>
 
 
-            <!-- SUBMIT -->
-
             <button
               type="submit"
               class="submit-button"
@@ -834,12 +1033,8 @@
 
 
             <div class="form-note">
-
-              After submitting the form,
-              you will be redirected to our
-              scheduling page to choose your
-              onboarding time.
-
+              After submitting, you'll be redirected
+              to our scheduling page.
             </div>
 
           </form>
@@ -853,9 +1048,7 @@
   </section>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -894,10 +1087,8 @@
 
 
   <script>
-
     document.getElementById("year").textContent =
       new Date().getFullYear();
-
   </script>
 
 </body>
