@@ -477,7 +477,7 @@ alt="Legacy Lifted Dispatch">
 
 
 <!-- =========================
-     CENTER HERO
+     HERO
 ========================= -->
 
 <section class="hero" id="home">
@@ -597,7 +597,7 @@ so you can focus on driving.
 
 
 <!-- =========================
-     FORM
+     GET STARTED / FORM
 ========================= -->
 
 <section class="get-started" id="get-started">
@@ -676,15 +676,14 @@ name="_template"
 value="table"
 >
 
-
-<!-- REDIRECT TO GOOGLE SCHEDULING AFTER SUBMISSION -->
-
 <input
 type="hidden"
 name="_next"
 value="https://calendar.app.google/kAQuqQPcbiajZH2c8"
 >
 
+
+<!-- FULL NAME -->
 
 <div class="form-group">
 
@@ -702,6 +701,8 @@ required
 </div>
 
 
+<!-- PHONE -->
+
 <div class="form-group">
 
 <label>
@@ -717,6 +718,8 @@ required
 
 </div>
 
+
+<!-- EMAIL -->
 
 <div class="form-group">
 
@@ -734,6 +737,8 @@ required
 </div>
 
 
+<!-- EQUIPMENT -->
+
 <div class="form-group">
 
 <label>
@@ -749,31 +754,31 @@ required
 Select equipment
 </option>
 
-<option>
+<option value="Dry Van">
 Dry Van
 </option>
 
-<option>
+<option value="Reefer">
 Reefer
 </option>
 
-<option>
+<option value="Flatbed">
 Flatbed
 </option>
 
-<option>
+<option value="Box Truck">
 Box Truck
 </option>
 
-<option>
+<option value="Power Only">
 Power Only
 </option>
 
-<option>
+<option value="Hotshot">
 Hotshot
 </option>
 
-<option>
+<option value="Other">
 Other
 </option>
 
@@ -781,6 +786,98 @@ Other
 
 </div>
 
+
+<!-- MC -->
+
+<div class="form-group">
+
+<label>
+Do you have an active MC Number?
+</label>
+
+<select
+name="mc_number"
+required
+>
+
+<option value="">
+Select an option
+</option>
+
+<option value="Yes">
+Yes
+</option>
+
+<option value="No">
+No
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DOT -->
+
+<div class="form-group">
+
+<label>
+Do you have an active DOT Number?
+</label>
+
+<select
+name="dot_number"
+required
+>
+
+<option value="">
+Select an option
+</option>
+
+<option value="Yes">
+Yes
+</option>
+
+<option value="No">
+No
+</option>
+
+</select>
+
+</div>
+
+
+<!-- CDL -->
+
+<div class="form-group">
+
+<label>
+Do you have a valid CDL?
+</label>
+
+<select
+name="cdl"
+required
+>
+
+<option value="">
+Select an option
+</option>
+
+<option value="Yes">
+Yes
+</option>
+
+<option value="No">
+No
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DISPATCH NEEDS -->
 
 <div class="form-group">
 
@@ -796,6 +893,8 @@ placeholder="Tell us briefly about your dispatch needs"
 
 </div>
 
+
+<!-- SUBMIT -->
 
 <button
 type="submit"
